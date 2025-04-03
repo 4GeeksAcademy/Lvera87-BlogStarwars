@@ -1,8 +1,12 @@
 import { Link } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import 'bootstrap-icons/font/bootstrap-icons.css'; // Import Bootstrap Icons
+import useGlobalReducer from "../hooks/useGlobalReducer"; // Importa el hook existente
 
 export const Navbar = () => {
+  // Usa el hook para acceder al estado global y al despachador
+  const { store, dispatch } = useGlobalReducer();
+
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
@@ -38,24 +42,35 @@ export const Navbar = () => {
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                Favorites
+                Favorites <span className="badge bg-secondary">{store.favorites.length}</span>
               </button>
-              <ul className="dropdown-menu">
-                <li>
-                  <Link className="dropdown-item" to="/action">
-                    Action
-                  </Link>
-                </li>
-                <li>
-                  <Link className="dropdown-item" to="/another-action">
-                    Another action
-                  </Link>
-                </li>
-                <li>
-                  <Link className="dropdown-item" to="/something-else">
-                    Something else here
-                  </Link>
-                </li>
+              <ul className="dropdown-menu dropdown-menu-end" style={{ maxHeight: "300px", overflowY: "auto" }}>
+                {store.favorites.length > 0 ? (
+                  store.favorites.map((item) => (
+                    <li
+                      key={item.uid}
+                      className="dropdown-item d-flex justify-content-between align-items-center"
+                      style={{ padding: "0.5rem 1rem" }}
+                    >
+                      <span>{item.name}</span>
+                      <i
+                        className="bi bi-trash"
+                        style={{ cursor: "pointer", color: "black" }}
+                        onClick={(e) => {
+                          e.stopPropagation(); // Prevent the dropdown from closing
+                          dispatch({
+                            type: 'remove_from_favorites',
+                            payload: { uid: item.uid, name: item.name }
+                          });
+                        }}
+                      ></i>
+                    </li>
+                  ))
+                ) : (
+                  <li className="dropdown-item text-center text-muted" style={{ padding: "0.5rem 1rem" }}>
+                    No favorites added
+                  </li>
+                )}
               </ul>
             </li>
           </ul>
