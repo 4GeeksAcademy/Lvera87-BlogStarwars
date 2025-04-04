@@ -14,7 +14,7 @@ export default function storeReducer(store, action = {}) {
       return {
         ...store,
         favorites: store.favorites.filter((fav) => {
-          return fav.uid !== action.payload.uid; // Filtra los favoritos que no coincidan con el uid
+          return fav.uid !== action.payload.uid || fav.name !== action.payload.name; // Filtra por uid y name
         })
       };
 
@@ -22,8 +22,8 @@ export default function storeReducer(store, action = {}) {
     case 'add_to_favorites':
       const { uid, name } = action.payload;
 
-      // Verificar si el favorito ya existe
-      const exists = store.favorites.some((fav) => fav.uid === uid);
+      // Verificar si el favorito ya existe usando uid y name
+      const exists = store.favorites.some((fav) => fav.uid === uid && fav.name === name);
       if (exists) {
         return store; // Si ya existe, no lo agregues
       }

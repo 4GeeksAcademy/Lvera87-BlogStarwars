@@ -104,47 +104,54 @@ export const Home = () => {
     }, []);
 
     return (
-        <div className="p-4">
-            <h2 className="text-danger">Characters</h2>
-            <div className="text-center mt-4 d-flex overflow-auto gap-4">
-                {store.people && store.people.length > 0 ? (
-                    store.people.map((item) => (
-                        <PeopleCard key={item.uid} item={item} />
-                    ))
-                ) : (
-                    <p>No hay datos de personajes disponibles.</p>
-                )}
+        <div className="container-main p-5 mt-5" style={{ marginTop: "20rem" }}>
+            <div className="section-block">
+                <h2 className="text-danger">Characters</h2> {/* Este título debería renderizarse */}
+                <div className="text-center mt-4 d-flex overflow-auto gap-4">
+                    {store.people && store.people.length > 0 ? (
+                        store.people.map((item) => (
+                            <PeopleCard key={item.uid} item={item} />
+                        ))
+                    ) : (
+                        <p>No hay datos de personajes disponibles.</p>
+                    )}
+                </div>
             </div>
-            
-            <h2 className="text-danger mt-5 mb-0">Planets</h2>
-            <div className="text-center mt-4 d-flex overflow-auto gap-4">
-                {store.planets && store.planets.length > 0 ? (
-                    store.planets.map((item) => (
-                        <PlanetCard
-                            uid={item.uid}
-                            key={item.uid}
-                            name={item.name}
-                            population={item.population}
-                            climate={item.climate}
-                            terrain={item.terrain}
-                        />
-                    ))
-                ) : (
-                    <p>No hay datos de planetas disponibles.</p>
-                )}
+
+            <div className="section-block">
+                <h2 className="text-danger mt-5 mb-0">Planets</h2>
+                <div className="text-center mt-4 d-flex overflow-auto gap-4">
+                    {store.planets && store.planets.length > 0 ? (
+                        store.planets.map((item) => (
+                            <PlanetCard
+                                uid={item.uid}
+                                key={item.uid}
+                                name={item.name}
+                                population={item.population}
+                                climate={item.climate}
+                                terrain={item.terrain}
+                            />
+                        ))
+                    ) : (
+                        <p>No hay datos de planetas disponibles.</p>
+                    )}
+                </div>
             </div>
-            <h2 className="text-danger mt-5 mb-0">Vehicles</h2>
-            <div className="text-center mt-4 d-flex overflow-auto gap-4">
-                {store.vehicles && store.vehicles.length > 0 ? (
-                    store.vehicles.map((item) => (
-                        <VehicleCard
-                            key={item.uid}
-                            item={item}
-                        />
-                    ))
-                ) : (
-                    <p>No hay datos de vehiculos disponibles.</p>
-                )}
+
+            <div className="section-block">
+                <h2 className="text-danger mt-5 mb-0">Vehicles</h2>
+                <div className="text-center mt-4 d-flex overflow-auto gap-4">
+                    {store.vehicles && store.vehicles.length > 0 ? (
+                        store.vehicles.map((item) => (
+                            <VehicleCard
+                                key={item.uid}
+                                item={item}
+                            />
+                        ))
+                    ) : (
+                        <p>No hay datos de vehiculos disponibles.</p>
+                    )}
+                </div>
             </div>
         </div>
     );

@@ -1,0 +1,18 @@
+/* Ajustar el margen superior del contenido principal */
+body {
+  padding-top: 200px; /* Incrementa este valor para garantizar que el navbar no tape el contenido */
+}
+
+.container-main {
+  margin-top: 20px; /* Asegura un margen adicional para el contenido principal */
+}
+
+.section-block {
+  display: block; /* Asegura que cada sección sea un bloque independiente */
+  margin-bottom: 40px; /* Espaciado entre secciones */
+}
+
+.section-block h2 {
+  color: #dc3545; /* Asegura que el color sea visible */
+  margin-top: 0; /* Asegura que no haya un margen negativo que lo oculte */
+}

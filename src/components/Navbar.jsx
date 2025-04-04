@@ -8,7 +8,7 @@ export const Navbar = () => {
   const { store, dispatch } = useGlobalReducer();
 
   return (
-    <nav className="navbar navbar-expand-lg bg-body-tertiary">
+    <nav className="navbar navbar-expand-lg bg-body-tertiary fixed-top mb-2">
       <div className="container-fluid">
         {/* Logo as a Link to the home page */}
         <Link to="/" className="navbar-brand">
@@ -60,7 +60,7 @@ export const Navbar = () => {
                           e.stopPropagation(); // Prevent the dropdown from closing
                           dispatch({
                             type: 'remove_from_favorites',
-                            payload: { uid: item.uid, name: item.name }
+                            payload: { uid: item.uid, name: item.name } // Incluye uid y name
                           });
                         }}
                       ></i>

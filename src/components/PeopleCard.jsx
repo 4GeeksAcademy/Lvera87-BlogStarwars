@@ -11,7 +11,11 @@ const PeopleCard = ({ item }) => {
 
     return (
         <div className="card flex-shrink-0" style={{ width: "18rem" }}>
-            <img src="https://picsum.photos/200/200" className="card-img-top" alt="People card" />
+            <img 
+                src="https://picsum.photos/200/200" 
+                className="card-img-top" 
+                alt={`${item.name} image`} // Asegura que el atributo alt sea descriptivo
+            />
             <div className="card-body d-flex flex-column justify-content-between">
                 <div>
                     <h5 className="card-title mb-5">{item.name}</h5>
