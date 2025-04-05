@@ -8,6 +8,7 @@ export const Home = () => {
     const { store, dispatch } = useGlobalReducer();
 
     console.log("Estado global (store):", store); // Depuración del estado global
+    console.log("Datos en store.vehicles:", store.vehicles);
 
     // Obtener datos de personajes
     const getPeople = async () => {
@@ -25,9 +26,12 @@ export const Home = () => {
                     return {
                         uid: item.uid,
                         name: details.result.properties.name,
-                        gender: details.result.properties.gender,
+                        height: details.result.properties.height,
+                        mass: details.result.properties.mass,
                         hair_color: details.result.properties.hair_color,
+                        skin_color: details.result.properties.skin_color,
                         eye_color: details.result.properties.eye_color,
+                        birth_year: details.result.properties.birth_year,
                     };
                 })
             );
@@ -86,6 +90,10 @@ export const Home = () => {
                         vehicle_class: details.result.properties.vehicle_class,
                         model: details.result.properties.model,
                         passengers: details.result.properties.passengers,
+                        length: details.result.properties.length,
+                        cargo_capacity: details.result.properties.cargo_capacity,
+                        cost_in_credits: details.result.properties.cost_in_credits,
+                        manufacturer: details.result.properties.manufacturer,
                     };
                 })
             );
@@ -103,10 +111,11 @@ export const Home = () => {
         getVehicles();
     }, []);
 
+
     return (
-        <div className="container-main p-5 mt-5" style={{ marginTop: "20rem" }}>
+        <div className="container-main p-5 mt-5">
             <div className="section-block">
-                <h2 className="text-danger">Characters</h2> {/* Este título debería renderizarse */}
+                <h2 className="text-danger">Characters</h2>
                 <div className="text-center mt-4 d-flex overflow-auto gap-4">
                     {store.people && store.people.length > 0 ? (
                         store.people.map((item) => (
@@ -143,13 +152,10 @@ export const Home = () => {
                 <div className="text-center mt-4 d-flex overflow-auto gap-4">
                     {store.vehicles && store.vehicles.length > 0 ? (
                         store.vehicles.map((item) => (
-                            <VehicleCard
-                                key={item.uid}
-                                item={item}
-                            />
+                            <VehicleCard key={item.uid} item={item} />
                         ))
                     ) : (
-                        <p>No hay datos de vehiculos disponibles.</p>
+                        <p>No hay datos de vehículos disponibles.</p>
                     )}
                 </div>
             </div>

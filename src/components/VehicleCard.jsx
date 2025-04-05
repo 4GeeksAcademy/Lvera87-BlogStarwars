@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import useGlobalReducer from '../hooks/useGlobalReducer';
 
 const VehicleCard = ({ item }) => {
@@ -20,7 +21,9 @@ const VehicleCard = ({ item }) => {
                     <p className="card-text">Passengers: {item.passengers}</p>
                 </div>
                 <div className="d-flex justify-content-between mt-5"> {/* Contenedor para los botones */}
-                    <button type="button" className="btn btn-outline-primary">Learn more!</button>
+                    <Link to={`/detail/vehicle/${item.uid}`} className="btn btn-outline-primary">
+                        Learn more!
+                    </Link>
                     <button
                         type="button"
                         className="btn btn-outline-warning"

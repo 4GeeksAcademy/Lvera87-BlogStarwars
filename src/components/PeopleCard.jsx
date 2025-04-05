@@ -24,7 +24,7 @@ const PeopleCard = ({ item }) => {
                     <p className="card-text">Eye Color: {item.eye_color}</p>
                 </div>
                 <div className="d-flex justify-content-between mt-5">
-                    <Link to={`/people/${item.uid}`} className="btn btn-outline-primary">
+                    <Link to={`/detail/people/${item.uid}`} className="btn btn-outline-primary">
                         Learn more!
                     </Link>
                     <button

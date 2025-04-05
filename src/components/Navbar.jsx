@@ -46,9 +46,9 @@ export const Navbar = () => {
               </button>
               <ul className="dropdown-menu dropdown-menu-end" style={{ maxHeight: "300px", overflowY: "auto" }}>
                 {store.favorites.length > 0 ? (
-                  store.favorites.map((item) => (
+                  store.favorites.map((item,index) => (
                     <li
-                      key={item.uid}
+                      key={index}
                       className="dropdown-item d-flex justify-content-between align-items-center"
                       style={{ padding: "0.5rem 1rem" }}
                     >

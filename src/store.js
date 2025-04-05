@@ -50,7 +50,7 @@ export default function storeReducer(store, action = {}) {
 
     // Acción para establecer los datos de los vehículos
     case 'set_vehicles_data':
-      console.log("Datos en store.vehicles:", store.vehicles);
+      console.log("Datos en store.vehicles:", action.payload); // Depuración de los datos
       return {
         ...store,
         vehicles: action.payload,

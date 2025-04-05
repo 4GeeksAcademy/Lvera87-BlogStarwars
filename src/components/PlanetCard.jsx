@@ -1,5 +1,6 @@
 import React from 'react';
 import useGlobalReducer from '../hooks/useGlobalReducer';
+import { Link } from 'react-router-dom';
 
 const PlanetCard = ({ name, population, climate, terrain, uid }) => {
     const { dispatch, store} = useGlobalReducer();
@@ -32,7 +33,9 @@ const PlanetCard = ({ name, population, climate, terrain, uid }) => {
                     <p className="card-text">Terrain: {terrain}</p>
                 </div>
                 <div className="d-flex justify-content-between mt-5"> {/* Contenedor para los botones */}
-                    <button type="button" className="btn btn-outline-primary">Learn more!</button>
+                    <Link to={`/detail/planet/${uid}`} className="btn btn-outline-primary">
+                        Learn more!
+                    </Link>
                     <button
                         type="button"
                         className="btn btn-outline-warning"
